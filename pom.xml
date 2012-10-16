@@ -39,6 +39,7 @@
     <maven.compiler.target>1.6</maven.compiler.target>
     <jackson.version>1.8.5</jackson.version>
     <buildcontext-capture.version>0.6</buildcontext-capture.version>
+    <httpclient.version>4.2.1</httpclient.version>
   </properties>
 
   <scm>
@@ -57,6 +58,11 @@
       <artifactId>buildcontext-capture</artifactId>
       <version>${buildcontext-capture.version}</version>
       <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
     </dependency>
   </dependencies>
 
