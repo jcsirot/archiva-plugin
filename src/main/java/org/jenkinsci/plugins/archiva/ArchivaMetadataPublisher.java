@@ -108,6 +108,10 @@ public class ArchivaMetadataPublisher extends Recorder {
                     return FormValidation.error("Can not connect to the server. " +
                             "Please check url and Archiva version (>=1.4-M3)");
                 }
+            } catch (ClientProtocolException e) {
+                return FormValidation.error(e.getMessage());
+            } catch (IOException e) {
+                return FormValidation.error(e.getMessage());
             } finally {
                 defaultHttpClient.getConnectionManager().shutdown();
             }
