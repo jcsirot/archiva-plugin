@@ -31,6 +31,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
+import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
@@ -46,6 +47,13 @@ import java.util.List;
  */
 public class ArchivaMetadataPublisher extends Recorder {
 
+    private final ArchivaPublisherConfiguration configuration;
+
+    @DataBoundConstructor
+    public ArchivaMetadataPublisher(ArchivaPublisherConfiguration configuration) {
+        this.configuration = configuration;
+    }
+
     @Override
     public ArchivaDescriptor getDescriptor() {
         return (ArchivaDescriptor) super.getDescriptor();
@@ -53,6 +61,10 @@ public class ArchivaMetadataPublisher extends Recorder {
 
     public BuildStepMonitor getRequiredMonitorService() {
         return BuildStepMonitor.NONE;
+    }
+
+    public ArchivaPublisherConfiguration getConfiguration() {
+        return configuration;
     }
 
     @Extension
